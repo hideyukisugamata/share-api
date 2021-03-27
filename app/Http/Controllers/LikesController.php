@@ -18,7 +18,7 @@ class LikesController extends Controller
         ];
         DB::table('likes') -> insert($param);
         return response() -> json([
-            'message' => 'likr created succeessfully',
+            'message' => 'like created succeessfully',
             'data' => $param
         ],200);
     }

@@ -10,7 +10,7 @@ use Carbon\Carbon;
 class RegisterController extends Controller
 {
     public function post(Request $request){
-        $now = Carcon::now();
+        $now = Carbon::now();
         $hashed_password = Hash::make($request -> password);
         $param = [
             "name" => $request -> name,
@@ -18,7 +18,7 @@ class RegisterController extends Controller
             "password" => $hashed_password,
             "profile" => $request -> profile,
             "created_at" => $now,
-            "update_at" => $now,
+            "updated_at" => $now,
         ];
         DB::table('users') -> insert($param);
         return response() -> json([

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
-    pubilic function get(Request $request){
+    public function get(Request $request){
         if ($request -> has('email')){
             $items = DB::table('users') -> where('email',$request -> email) -> get();
             return response() -> json([
@@ -26,7 +26,7 @@ class UsersController extends Controller
             'profile' => $request -> profile,
             'email' => $request -> email
         ];
-        DB::table('users') -> where(email,$request -> email) -> update($param);
+        DB::table('users') -> where('email',$request -> email) -> update($param);
         return response()-> json([
             'message' => 'User updated successfully',
             'data' => $param
